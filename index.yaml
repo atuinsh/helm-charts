@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  atuin:
+  - apiVersion: v2
+    appVersion: 17.0.1
+    created: "2023-11-05T16:20:26.975402103Z"
+    description: A Helm chart for Atuin, the shell sync tool
+    digest: c23bd9994887a2a5dbc7daf7390d4c5d345f5ad5972272e1526410ce5aabbb08
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/atuinsh/charts/releases/download/atuin-0.1.0/atuin-0.1.0.tgz
+    version: 0.1.0
+generated: "2023-11-05T16:20:26.975441203Z"
