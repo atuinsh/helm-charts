@@ -19,6 +19,8 @@ atuin:
   # Currently only register webhooks are supported, and are sent in the slack format
   hooks:
     enabled: false
+    
+    # The username to set for hooks - useful for the slack format
     username: "Atuin"
     url: ""
 
