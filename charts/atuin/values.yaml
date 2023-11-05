@@ -14,13 +14,24 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+postgresql:
+  # Currently does nothing as we only support postgres. _coming soon_
+  enabled: true
+
+  uri:
+    secretName: atuin
+    secretKey: dbUri
+
 atuin:
   # Setup Atuin webhook notifications
   # Currently only register webhooks are supported, and are sent in the slack format
   hooks:
     enabled: false
+    
+    # The username to set for hooks - useful for the slack format
     username: "Atuin"
     url: ""
+
 
   logLevel: info
 
@@ -31,7 +42,7 @@ atuin:
   maxHistoryLength: 8192
     
   # Maximum length of a record.
-  maxRecordSize: 1073741824
+  maxRecordSize: "1073741824"
 
   # Page size used for history sync
   pageSize: 1100

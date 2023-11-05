@@ -36,25 +36,29 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          args: ["server", "start"]
           env:
             - name: ATUIN_HOST
               value: 0.0.0.0
             - name: ATUIN_PORT
-              value: {{ .Values.service.port }}
+              value: "{{ .Values.service.port }}"
 
             - name: ATUIN_LOG
               value: {{ .Values.atuin.logLevel }}
 
             - name: ATUIN_OPEN_REGISTRATION
-              value: {{ .Values.atuin.openRegistration }}
+              value: "{{ .Values.atuin.openRegistration }}"
             - name: ATUIN_MAX_HISTORY_LENGTH
-              value: {{ .Values.atuin.maxHistoryLength }}
+              value: "{{ .Values.atuin.maxHistoryLength }}"
             - name: ATUIN_MAX_RECORD_SIZE
-              value: {{ .Values.atuin.maxRecordSize }}
+              value: "{{ .Values.atuin.maxRecordSize }}"
             - name: ATUIN_PAGE_SIZE
-              value: {{ .Values.atuin.pageSize }}
+              value: "{{ .Values.atuin.pageSize }}"
             - name: ATUIN_DB_URI
-              value: {{ .Values.atuin.pageSize }}
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.postgresql.uri.secretName }}
+                  key: {{ .Values.postgresql.uri.secretKey }}
 
             {{- if .Values.atuin.hooks.enabled }}
             - name: ATUIN_REGISTER_WEBHOOK_URL
