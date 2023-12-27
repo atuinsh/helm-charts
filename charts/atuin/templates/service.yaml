@@ -7,9 +7,19 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
+
     - port: {{ .Values.service.port }}
       targetPort: http
       protocol: TCP
       name: http
+
+
+    {{- if .Values.atuin.metrics.enabled }}
+    - port: {{ .Values.atuin.metrics.port }}
+      targetPort: metrics
+      protocol: TCP
+      name: metrics
+    {{- end }}
+
   selector:
     {{- include "atuin.selectorLabels" . | nindent 4 }}

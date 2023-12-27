@@ -66,10 +66,24 @@ spec:
             - name: ATUIN_REGISTER_WEBHOOK_USERNAME
               value: {{ .Values.atuin.hooks.username }}
             {{- end }}
+
+            {{- if .Values.atuin.metrics.enabled }}
+            - name: ATUIN_METRICS__ENABLE
+              value: true
+            - name: ATUIN_METRICS__HOST
+              value: {{ .Values.atuin.metrics.host }}
+            - name: ATUIN_METRICS__PORT
+              value: {{ .Values.atuin.metrics.port}}
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+            {{- if .Values.atuin.metrics.enabled }}
+            - name: metrics
+              containerPort: {{ .Values.atuin.metrics.port }}
+              protocol: TCP
+            {{- end }}
           livenessProbe:
             httpGet:
               path: /
