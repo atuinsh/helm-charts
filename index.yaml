@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   atuin:
   - apiVersion: v2
+    appVersion: 17.2.1
+    created: "2024-01-03T16:01:56.844662917Z"
+    description: A Helm chart for Atuin, the shell sync tool
+    digest: 2ce3757612a4f2b4b07461e1b26451385afce2ad993bd24b8acea985a768cd48
+    maintainers:
+    - email: ellie@atuin.sh
+      name: Ellie Huxtable
+      url: https://ellie.wtf
+    name: atuin
+    type: application
+    urls:
+    - https://github.com/atuinsh/helm-charts/releases/download/atuin-0.3.1/atuin-0.3.1.tgz
+    version: 0.3.1
+  - apiVersion: v2
     appVersion: 17.2.0
     created: "2024-01-03T13:54:17.58918621Z"
     description: A Helm chart for Atuin, the shell sync tool
@@ -67,4 +81,4 @@ entries:
     urls:
     - https://github.com/atuinsh/charts/releases/download/atuin-0.1.0/atuin-0.1.0.tgz
     version: 0.1.0
-generated: "2024-01-03T13:54:17.589207981Z"
+generated: "2024-01-03T16:01:56.844688214Z"
