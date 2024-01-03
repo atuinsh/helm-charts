@@ -59,6 +59,12 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.postgresql.uri.secretName }}
                   key: {{ .Values.postgresql.uri.secretKey }}
+            - name: ATUIN_TLS__ENABLE
+              value: "false"
+            - name: ATUIN_TLS__CERT_PATH
+              value: ""
+            - name: ATUIN_TLS__PKEY_PATH
+              value: ""
 
             {{- if .Values.atuin.hooks.enabled }}
             - name: ATUIN_REGISTER_WEBHOOK_URL
@@ -69,11 +75,11 @@ spec:
 
             {{- if .Values.atuin.metrics.enabled }}
             - name: ATUIN_METRICS__ENABLE
-              value: true
+              value: "true"
             - name: ATUIN_METRICS__HOST
               value: {{ .Values.atuin.metrics.host }}
             - name: ATUIN_METRICS__PORT
-              value: {{ .Values.atuin.metrics.port}}
+              value: "{{ .Values.atuin.metrics.port}}"
             {{- end }}
           ports:
             - name: http

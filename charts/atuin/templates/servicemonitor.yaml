@@ -1,0 +1,15 @@
+{{- if .Values.serviceMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: atuin
+spec:
+  endpoints:
+  - interval: 60s
+    path: /metrics
+    port: metrics
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: atuin
+      app.kubernetes.io/name: atuin
+{{- end}}

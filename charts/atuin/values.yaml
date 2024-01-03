@@ -22,6 +22,9 @@ postgresql:
     secretName: atuin
     secretKey: dbUri
 
+serviceMonitor:
+  enabled: false
+
 atuin:
   # Setup Atuin webhook notifications
   # Currently only register webhooks are supported, and are sent in the slack format
