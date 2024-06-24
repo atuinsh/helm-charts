@@ -40,6 +40,14 @@ atuin:
     host: "0.0.0.0"
     port: 9001
 
+  mail:
+    enabled: false
+    postmark:
+      token: null
+    verification:
+      from: "Atuin"
+      subject: "Atuin Verification"
+
   logLevel: info
 
   # Enable registration
