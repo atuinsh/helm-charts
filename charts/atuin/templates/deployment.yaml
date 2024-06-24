@@ -81,6 +81,22 @@ spec:
             - name: ATUIN_METRICS__PORT
               value: "{{ .Values.atuin.metrics.port}}"
             {{- end }}
+
+            {{- if .Values.atuin.mail.enabled }}
+            - name: ATUIN_MAIL__ENABLED
+              value: "true"
+
+            {{- if .Values.atuin.mail.postmark.token}}
+            - name: ATUIN_MAIL__POSTMARK__TOKEN
+              value: {{ .Values.atuin.mail.postmark.token }}
+            {{- end }}
+
+            - name: ATUIN_MAIL__VERIFICATION__FROM
+              value: "{{ .Values.atuin.mail.verification.from }}"
+
+            - name: ATUIN_MAIL__VERIFICATION__SUBJECT
+              value: "{{ .Values.atuin.mail.verification.subject }}"
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
