@@ -66,6 +66,11 @@ spec:
             - name: ATUIN_TLS__PKEY_PATH
               value: ""
 
+            {{- if .Values.atuin.fake_version }}
+            - name: ATUIN_FAKE_VERSION
+              value: {{ .Values.atuin.fake_version }}
+            {{- end }}
+
             {{- if .Values.atuin.hooks.enabled }}
             - name: ATUIN_REGISTER_WEBHOOK_URL
               value: {{ .Values.atuin.hooks.url }}
