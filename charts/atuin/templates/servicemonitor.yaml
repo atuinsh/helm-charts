@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: atuin
+  name: {{ include "atuin.fullname" . }}
 spec:
   endpoints:
   - interval: 60s
@@ -10,6 +10,5 @@ spec:
     port: metrics
   selector:
     matchLabels:
-      app.kubernetes.io/instance: atuin
-      app.kubernetes.io/name: atuin
+      {{- include "atuin.selectorLabels" . | nindent 6 }}
 {{- end}}
